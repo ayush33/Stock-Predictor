@@ -16,6 +16,8 @@ app.use(express.json());
 console.log('aa',process.env.ANTHROPIC_API_KEY,)
 console.log("API KEY LOADED:", process.env.ANTHROPIC_API_KEY?.slice(0, 15));
 app.post("/api/analyze", async (req, res) => {
+    console.log("Anthropic response received1");
+
   try {
     const response = await fetch("https://api.anthropic.com/v1/messages", {
       method: "POST",
@@ -26,6 +28,7 @@ app.post("/api/analyze", async (req, res) => {
       },
       body: JSON.stringify(req.body),
     });
+    console.log("Anthropic response received");
     const data = await response.json();
     res.json(data);
   } catch (err) {
