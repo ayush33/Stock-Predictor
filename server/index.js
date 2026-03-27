@@ -12,6 +12,9 @@ app.use(cors({
   }));
 app.use(express.json());
 
+
+console.log('aa',process.env.ANTHROPIC_API_KEY,)
+console.log("API KEY LOADED:", process.env.ANTHROPIC_API_KEY?.slice(0, 15));
 app.post("/api/analyze", async (req, res) => {
   try {
     const response = await fetch("https://api.anthropic.com/v1/messages", {
