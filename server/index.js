@@ -15,6 +15,12 @@ app.use(express.json());
 
 console.log('aa',process.env.ANTHROPIC_API_KEY,)
 console.log("API KEY LOADED:", process.env.ANTHROPIC_API_KEY?.slice(0, 15));
+
+app.use((req, res, next) => {
+    console.log("Incoming request:", req.method, req.url);
+    next();
+  });
+  
 app.post("/api/analyze", async (req, res) => {
     console.log("Request reached backend");
   
